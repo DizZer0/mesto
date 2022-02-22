@@ -31,6 +31,10 @@
 @import url(../blocks/photo-grid/__info/photo-grid__info.css);
 @import url(../blocks/photo-grid/__item/photo-grid__item.css);
 @import url(../blocks/photo-grid/__title/photo-grid__title.css);
+/* Блок footer
+-----------------------------------------------------*/
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
 /*   @import url(../blocks);      */
 /* Блок 
 -----------------------------------------------------*/
