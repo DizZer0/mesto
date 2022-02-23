@@ -8,6 +8,6 @@
   .edit-profile__items {
     grid-column: 2/3;
     grid-row: 2/3;
-    padding: 34px 36px 37px
+    padding: 34px 36px 37px;
   }
 }
