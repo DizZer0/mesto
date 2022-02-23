@@ -35,6 +35,18 @@
 -----------------------------------------------------*/
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+/* Блок edit-profile
+-----------------------------------------------------*/
+@import url(../blocks/edit-form/edit-form.css);
+@import url(../blocks/edit-form/_disabled/edit-form_disabled.css);
+@import url(../blocks/edit-profile/edit-profile.css);
+@import url(../blocks/edit-profile/__exit-button/edit-profile__exit-button.css);
+@import url(../blocks/edit-profile/__input-text/edit-profile__input-text.css);
+@import url(../blocks/edit-profile/__items/edit-profile__items.css);
+@import url(../blocks/edit-profile/__save-button/edit-profile__save-button.css);
+@import url(../blocks/edit-profile/__name-text/edit-profile__name-text.css);
+@import url(../blocks/edit-profile/__job-text/edit-profile__job-text.css);
+@import url(../blocks/edit-profile/__title/edit-profile__title.css);
 /*   @import url(../blocks);      */
 /* Блок 
 -----------------------------------------------------*/
