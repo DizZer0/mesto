@@ -13,3 +13,5 @@ Grid layout
 @media
 JavaScript
 
+Ссылка на github pages
+https://dizzer0.github.io/mesto/index.html
