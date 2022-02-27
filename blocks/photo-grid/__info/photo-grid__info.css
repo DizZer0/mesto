@@ -1,5 +1,5 @@
 .photo-grid__info {
   display: flex;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 20px 24px;
 }

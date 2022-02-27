@@ -18,51 +18,51 @@
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <h2 class="profile__status">Исследователь океана</h2>
-          <button class="profile__edit-button"></button>
+          <button class="profile__edit-button" type="button"></button>
         </div>
-        <button class="profile__add-button"></button>
+        <button class="profile__add-button" type="button"></button>
       </section>
       <section class="photo-grid">
         <article class="photo-grid__item">
-          <img class="photo-grid__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="">
+          <img class="photo-grid__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="старое заросшее здание в Карачаевске, заросшое травой на фоне лесистых гор">
           <div class="photo-grid__info">
             <h2 class="photo-grid__title">Карачаевск</h2>
-            <button class="photo-grid__like-button"></button>
+            <button class="photo-grid__like-button" type="button"></button>
           </div>
         </article>
         <article class="photo-grid__item">
-          <img class="photo-grid__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="">
+          <img class="photo-grid__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="бескрайние поля, на фоне который видна в туманке вершина горы Эльбрус">
           <div class="photo-grid__info">
             <h2 class="photo-grid__title">Гора Эльбрус</h2>
-            <button class="photo-grid__like-button"></button>
+            <button class="photo-grid__like-button" type="button"></button>
           </div>
         </article>
         <article class="photo-grid__item">
-          <img class="photo-grid__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="">
+          <img class="photo-grid__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="склоны покрытые лесами, на фоне которых вершина горы Домбай">
           <div class="photo-grid__info">
             <h2 class="photo-grid__title">Домбай</h2>
-            <button class="photo-grid__like-button"></button>
+            <button class="photo-grid__like-button" type="button"></button>
           </div>
         </article>
         <article class="photo-grid__item">
-          <img class="photo-grid__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="">
+          <img class="photo-grid__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="бескрайние поля, на фоне который видна в туманке вершина горы Эльбрус">
           <div class="photo-grid__info">
             <h2 class="photo-grid__title">Гора Эльбрус</h2>
-            <button class="photo-grid__like-button"></button>
+            <button class="photo-grid__like-button" type="button"></button>
           </div>
         </article>
         <article class="photo-grid__item">
-          <img class="photo-grid__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="">
+          <img class="photo-grid__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="склоны покрытые лесами, на фоне которых вершина горы Домбай">
           <div class="photo-grid__info">
             <h2 class="photo-grid__title">Домбай</h2>
-            <button class="photo-grid__like-button"></button>
+            <button class="photo-grid__like-button" type="button"></button>
           </div>
         </article>
         <article class="photo-grid__item">
-          <img class="photo-grid__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="">
+          <img class="photo-grid__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="старое заросшее здание в Карачаевске, заросшое травой на фоне лесистых гор">
           <div class="photo-grid__info">
             <h2 class="photo-grid__title">Карачаевск</h2>
-            <button class="photo-grid__like-button"></button>
+            <button class="photo-grid__like-button" type="button"></button>
           </div>
         </article>
       </section>
@@ -70,18 +70,18 @@
     <footer class="footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
-    <section class="edit-form edit-form_disabled">
-      <form action="#" class="edit-profile">
-        <div class="edit-profile__items">
+    <section class="popup popup_disabled">
+      <div class="popup__container">
+        <button class="popup__exit-button" type="button"></button>
+        <form action="#"  class="edit-profile" name="editProfile">
           <h2 class="edit-profile__title">Редактировать профиль</h2>
           <fieldset class="edit-profile__input-text">
-            <input type="text" class="edit-profile__name-text" placeholder="Введите своё имя">
-            <input type="text" class="edit-profile__job-text" placeholder="Кем вы работаете?">
+            <input type="text" class="edit-profile__text edit-profile__text_input_name" placeholder="Введите своё имя">
+             <input type="text" class="edit-profile__text edit-profile__text_input_job" placeholder="Кем вы работаете?">
           </fieldset>
-          <button class="edit-profile__save-button" type="button">Сохранить</button>
-        </div>
-        <button class="edit-profile__exit-button" type="button"></button>
-      </form>
+          <button class="edit-profile__save-button" type="submit">Сохранить</button>
+        </form>
+      </div>
     </section>
   </div>
   <script src="./js/index.js"></script>
