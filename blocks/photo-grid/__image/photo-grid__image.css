@@ -2,4 +2,6 @@
   width: 282px;
   height: 282px;
   padding-bottom: 21px;
+  object-fit: cover;
+  cursor: pointer;
 }

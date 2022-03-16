@@ -1,0 +1,30 @@
+<<<<<<< Updated upstream:blocks/edit-profile/edit-profile.css
+.edit-profile {
+  display: grid;
+  grid-template-columns: 282px;
+  grid-template-rows: 20px minmax(min-content, max-content);
+  grid-gap: 16px;
+=======
+.form-change {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  background-color: white;
+  border-radius: 10px;
+  padding: 25px 22px;
+>>>>>>> Stashed changes:blocks/form-change/form-change.css
+}
+
+@media (min-width: 767px) {
+<<<<<<< Updated upstream:blocks/edit-profile/edit-profile.css
+  .edit-profile {
+    grid-template-columns: 32px 430px min-content;
+    grid-template-rows: min-content minmax(min-content, max-content);
+    grid-gap: 8px;
+=======
+  .form-change {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    padding: 34px 36px 37px;
+>>>>>>> Stashed changes:blocks/form-change/form-change.css
+  }
+}

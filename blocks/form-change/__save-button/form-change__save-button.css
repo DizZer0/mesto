@@ -1,4 +1,4 @@
-.edit-profile__save-button {
+.form-change__save-button {
   width: 100%;
   height: 46px;
   border: none;
@@ -11,9 +11,17 @@
   line-height: 17px;
   text-align: center;
   color: #FFFFFF;
+<<<<<<< Updated upstream:blocks/edit-profile/__save-button/edit-profile__save-button.css
+=======
+  transition: opacity .2s;
+}
+.form-change__save-button:hover {
+  opacity: 80%;
+  cursor: pointer; 
+>>>>>>> Stashed changes:blocks/form-change/__save-button/form-change__save-button.css
 }
 @media (min-width: 767px) {
-  .edit-profile__save-button {
+  .form-change__save-button {
     height: 50px;
     font-size: 18px;
     line-height: 22px;

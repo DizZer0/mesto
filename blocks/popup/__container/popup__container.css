@@ -1,12 +1,13 @@
-.edit-profile {
+.popup__container {
   display: grid;
-  grid-template-columns: 282px;
+  grid-template-columns: minmax(282px, max-content);
   grid-template-rows: 20px minmax(min-content, max-content);
   grid-gap: 16px;
+  padding: 0 19px;
 }
 @media (min-width: 767px) {
-  .edit-profile {
-    grid-template-columns: 32px 430px min-content;
+  .popup__container {
+    grid-template-columns: 32px minmax(430px, max-content) min-content;
     grid-template-rows: min-content minmax(min-content, max-content);
     grid-gap: 8px;
   }
