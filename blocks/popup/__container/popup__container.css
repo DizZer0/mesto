@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .popup__container {
   display: grid;
   grid-template-columns: 282px;
@@ -9,5 +10,33 @@
     grid-template-columns: 32px 430px min-content;
     grid-template-rows: min-content minmax(min-content, max-content);
     grid-gap: 8px;
+=======
+<<<<<<<< HEAD:blocks/popup/__container/popup__container.css
+.popup__container {
+  display: grid;
+  grid-template-columns: minmax(282px, max-content);
+  grid-template-rows: 20px minmax(min-content, max-content);
+  grid-gap: 16px;
+  padding: 0 19px;
+}
+@media (min-width: 767px) {
+  .popup__container {
+    grid-template-columns: 32px minmax(430px, max-content) min-content;
+    grid-template-rows: min-content minmax(min-content, max-content);
+    grid-gap: 8px;
+========
+.edit-profile {
+  grid-row: 2/3;
+  background-color: white;
+  border-radius: 10px;
+  padding: 25px 22px;
+}
+@media (min-width: 767px) {
+  .edit-profile {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    padding: 34px 36px 37px;
+>>>>>>>> develop:blocks/edit-profile/edit-profile.css
+>>>>>>> develop
   }
 }
