@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream:blocks/form-change/__name-text/edit-profile__name-text.css
-.edit-profile__name-text {
-=======
 .form-change__text {
->>>>>>> Stashed changes:blocks/form-change/__text/form-change__text.css
   width: 100%;
   box-sizing: border-box;
   outline: none;
@@ -17,10 +13,6 @@
   line-height: 17px;
   color: #000000;
 }
-<<<<<<< Updated upstream:blocks/form-change/__name-text/edit-profile__name-text.css
-
-=======
 .form-change__text:last-child {
   margin-bottom: 0;
 }
->>>>>>> Stashed changes:blocks/form-change/__text/form-change__text.css

@@ -36,24 +36,11 @@
 -----------------------------------------------------*/
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
-<<<<<<< HEAD
 /* Блок popup
 -----------------------------------------------------*/
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/_disabled/popup_disabled.css);
 @import url(../blocks/popup/__exit-button/popup__exit-button.css);
 @import url(../blocks/popup/__container/popup__container.css);
-=======
-<<<<<<< Updated upstream
->>>>>>> develop
-/* Блок edit-profile
------------------------------------------------------*/
-@import url(../blocks/edit-profile/edit-profile.css);
-@import url(../blocks/edit-profile/__input-text/edit-profile__input-text.css);
-@import url(../blocks/edit-profile/__save-button/edit-profile__save-button.css);
-@import url(../blocks/edit-profile/__text/edit-profile__text.css);
-@import url(../blocks/edit-profile/__title/edit-profile__title.css);
-=======
 /* Блок popup
 -----------------------------------------------------*/
 @import url(../blocks/popup/popup.css);
@@ -72,7 +59,6 @@
 @import url(../blocks/view-photo/view-photo.css);
 @import url(../blocks/view-photo/__img/view-photo__img.css);
 @import url(../blocks/view-photo/__title/view-photo__title.css);
->>>>>>> Stashed changes
 /*   @import url(../blocks);      */
 /* Блок 
 -----------------------------------------------------*/
