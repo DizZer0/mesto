@@ -1,6 +1,5 @@
 let popup = document.querySelector('.popup');
 let editButton = document.querySelector('.profile__edit-button');
-<<<<<<< HEAD
 let exitButton = popup.querySelector('.popup__exit-button');
 let profileName = document.querySelector('.profile__name');
 let profileJob = document.querySelector('.profile__status');
@@ -8,28 +7,8 @@ let editName = popup.querySelector('.edit-profile__text_input_name');
 let editJob = popup.querySelector('.edit-profile__text_input_job');
 let saveButton = popup.querySelector('.edit-profile__save-button');
 let editForm = popup.querySelector('.edit-profile');
-=======
-<<<<<<< Updated upstream
 editButton.addEventListener('click', openEditForm);
-let exitButton = editForm.querySelector('.edit-profile__exit-button');
 exitButton.addEventListener('click', closeEditForm);
->>>>>>> develop
-function closeEditForm() {
-  popup.classList.add('popup_disabled');
-}
-function openEditForm() {
-<<<<<<< HEAD
-  popup.classList.remove('popup_disabled');
-=======
-  editForm.classList.remove('edit-form_disabled');
-=======
-let exitButton = popup.querySelector('.popup__exit-button');
-let profileName = document.querySelector('.profile__name');
-let profileJob = document.querySelector('.profile__status');
-let editName = popup.querySelector('.edit-profile__text_input_name');
-let editJob = popup.querySelector('.edit-profile__text_input_job');
-let saveButton = popup.querySelector('.edit-profile__save-button');
-let editForm = popup.querySelector('.edit-profile');
 let addPhotoForm = popup.querySelector('.add-photo');
 let editPhotoName = popup.querySelector('.add-photo__text_input_name');
 let editPhotoLink = popup.querySelector('.add-photo__text_input_link');
@@ -109,29 +88,11 @@ function removeAttributeViewPhoto () {
 function openEditForm() {
   popup.classList.remove('disabled');
   editForm.classList.remove('disabled');
->>>>>>> Stashed changes
->>>>>>> develop
   editName.value = profileName.textContent;
   editJob.value = profileJob.textContent;
 }
 function saveEditForm() {
-<<<<<<< HEAD
   popup.classList.add('popup_disabled');
-  profileName.textContent = editName.value;
-  profileJob.textContent = editJob.value;
-}
-editForm.addEventListener('submit', saveEditForm);
-exitButton.addEventListener('click', closeEditForm);
-editButton.addEventListener('click', openEditForm);
-=======
-<<<<<<< Updated upstream
-  editForm.classList.add('edit-form_disabled');
-  profileName.textContent = editName.value;
-  profileJob.textContent = editJob.value;
-}
-=======
-  popup.classList.add('disabled');
-  editForm.classList.add('disabled');
   profileName.textContent = editName.value;
   profileJob.textContent = editJob.value;
 }
@@ -158,5 +119,3 @@ exitButton.addEventListener('click', closeEditForm);
 editButton.addEventListener('click', openEditForm);
 addPhotoButton.addEventListener('click', openAddPhotoForm);
 addPhotoForm.addEventListener('submit', saveAddPhotoForm);
->>>>>>> Stashed changes
->>>>>>> develop
