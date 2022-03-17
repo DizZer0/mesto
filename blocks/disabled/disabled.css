@@ -1,0 +1,5 @@
+.disabled {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .3s, visibility .3s;
+}

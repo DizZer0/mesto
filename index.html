@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Место - делитесь своей жизнью с другими</title>
+  <link rel="stylesheet" href="./pages/index.css">
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <img class="logo header__logo" src="./images/header-logo.svg" alt="логотип сайта mesto russian">
+    </header>
+    <main class="content">
+      <section class="profile">
+        <img src="./images/profile-avatar.jpg" alt="аватарка пользователя" class="profile__avatar">
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <h2 class="profile__status">Исследователь океана</h2>
+          <button class="profile__edit-button" type="button"></button>
+        </div>
+        <button class="profile__add-button" type="button"></button>
+      </section>
+      <section class="photo-grid">
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">© 2020 Mesto Russia</p>
+    </footer>
+    <section class="popup disabled">
+      <div class="popup__container">
+        <button class="popup__exit-button" type="button"></button>
+        <form action="#"  class="form-change edit-profile disabled" name="edit-profile" onsubmit="return false;">
+          <h2 class="form-change__title">Редактировать профиль</h2>
+          <fieldset class="form-change__input-text">
+            <input type="text" class="form-change__text edit-profile__text_input_name" name='profile-name' placeholder="Введите своё имя">
+            <input type="text" class="form-change__text edit-profile__text_input_job" name='profile-job' placeholder="Кем вы работаете?">
+          </fieldset>
+          <button class="form-change__save-button edit-profile__save-button" type="submit">Сохранить</button>
+        </form>
+        <form action="#" class="form-change add-photo disabled" name="add-photo" onsubmit="return false;">
+          <h2 class="form-change__title">Новое место</h2>
+          <fieldset class="form-change__input-text">
+            <input type="text" class="form-change__text add-photo__text_input_name" name="photo-name" placeholder="Название">
+            <input type="text" class="form-change__text add-photo__text_input_link" name="photo-link" placeholder="Ссылка на картинку"> 
+          </fieldset>
+          <button class="form-change__save-button add-photo__save-button" type="submit">Создать</button>
+        </form>
+        <div class="view-photo disabled">
+          <img class='view-photo__img' src="" alt="">
+          <h2 class="view-photo__title"></h2>
+        </div>
+      </div>
+    </section>
+  </div>
+  <template id="template">
+    <article class="photo-grid__item">
+      <img class="photo-grid__image" src="" alt="">
+      <button class="photo-grid__delete-button" type="button"></button>
+      <div class="photo-grid__info">
+        <h2 class="photo-grid__title"></h2>
+        <button class="photo-grid__like-button" type="button"></button>
+      </div>
+    </article>
+  </template>
+  <script src="./js/index.js"></script>
+</body>
+</html>
