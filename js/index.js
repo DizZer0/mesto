@@ -1,5 +1,4 @@
 const editProfileOpenButton = document.querySelector('.profile__edit-button');
-const popup = document.querySelector('.popup');
 const addPhotoOpenButton = document.querySelector('.profile__add-button');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__status');
@@ -8,41 +7,43 @@ const closeButtonAddPhoto = popupAddPhoto.querySelector('.popup__exit-button');
 const addPhotoForm = popupAddPhoto.querySelector('.add-photo');
 const editPhotoName = popupAddPhoto.querySelector('.add-photo__text-name');
 const editPhotoLink = popupAddPhoto.querySelector('.add-photo__text-link');
-const savePhotoButton = popupAddPhoto.querySelector('.add-photo__save-button');
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const closeButtonEditProfile = popupEditProfile.querySelector('.popup__exit-button');
 const editForm = popupEditProfile.querySelector('.edit-profile');
 const editName = popupEditProfile.querySelector('.edit-profile__text-name');
 const editJob = popupEditProfile.querySelector('.edit-profile__text-job');
-const saveButton = popupEditProfile.querySelector('.edit-profile__save-button');
 const popupViewPhoto = document.querySelector('.popup_view-photo');
 const closeButtonViewPhoto = popupViewPhoto.querySelector('.popup__exit-button');
-const viewPhoto = popupViewPhoto.querySelector('.view-photo');
 const viewPhotoImg = popupViewPhoto.querySelector('.view-photo__img');
 const viewPhotoTitle = popupViewPhoto.querySelector('.view-photo__title')
 const template = document.querySelector('#template').content;
 const photoGrid = document.querySelector('.photo-grid');
-function createCard(i) {
+function createCard(data) {
   const photoCard = template.querySelector('.photo-grid__item').cloneNode(true);
-  photoCard.querySelector('.photo-grid__image').src = initialCards[i].link;
-  photoCard.querySelector('.photo-grid__image').alt = initialCards[i].name;
-  photoCard.querySelector('.photo-grid__title').textContent = initialCards[i].name;
-  photoGrid.prepend(photoCard);
+  const photoCardImage = photoCard.querySelector('.photo-grid__image');
+  photoCardImage.src = data.link;
+  photoCardImage.alt = data.name;
+  photoCard.querySelector('.photo-grid__title').textContent = data.name;
   photoCard.querySelector('.photo-grid__like-button').addEventListener('click', function (evt) {
     evt.target.classList.toggle('photo-grid__like-button_active');
   });
   photoCard.querySelector('.photo-grid__delete-button').addEventListener('click', function () {
     photoCard.remove();
   });
-  photoCard.querySelector('.photo-grid__image').addEventListener('click', function (evt) {
-    viewPhotoImg.setAttribute('src', evt.target.getAttribute('src'));
-    viewPhotoTitle.textContent = evt.target.parentNode.querySelector('.photo-grid__title').textContent;
+  photoCardImage.addEventListener('click', function (evt) {
+    viewPhotoImg.src = data.link;
+    viewPhotoImg.alt = data.name;
+    viewPhotoTitle.textContent = data.name;
     openPopup (popupViewPhoto);
   })
+  return photoCard
+}
+function renderCard(cardValue) {
+  photoGrid.prepend(cardValue);
 }
 function addPhotoCard() {
   for (let i = 0; i <initialCards.length; i++) {
-    createCard(i);
+    renderCard(createCard(initialCards[i]));
   }
 }
 addPhotoCard();
@@ -53,12 +54,9 @@ function closePopup (name) {
   name.classList.add('popup_disabled');
 };
 function savePopupAddPhoto () {
-  initialCards.push(
-  {
-    name: editPhotoName.value,
-    link: editPhotoLink.value
-  })
-  createCard(initialCards.length - 1);
+  // я здесь пушил данные в initialCards, в надежде что в будущем, при помощи бэкэнда сохранять initialCards с новыми карточками пользователя
+  // и загружать их при обновлении страницы. надеюсь на фидбэк по этому комментарию. после очеденого ревью удалю,чтобы код не засорял
+  renderCard(createCard({name: editPhotoName.value, link: editPhotoLink.value}));
   closePopup(popupAddPhoto);
 };
 function openPopupEditProfile() {
@@ -77,6 +75,8 @@ closeButtonEditProfile.addEventListener('click', function (){
 });
 editForm.addEventListener('submit', savePopupEditProfile);
 addPhotoOpenButton.addEventListener('click', function() {
+  editPhotoName.value = '';
+  editPhotoLink.value = '';
   openPopup(popupAddPhoto);
 });
 closeButtonAddPhoto.addEventListener('click', function () {
