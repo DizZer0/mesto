@@ -53,9 +53,8 @@ function openPopup(name) {
 function closePopup (name) {
   name.classList.add('popup_disabled');
 };
-function savePopupAddPhoto () {
-  // я здесь пушил данные в initialCards, в надежде что в будущем, при помощи бэкэнда сохранять initialCards с новыми карточками пользователя
-  // и загружать их при обновлении страницы. надеюсь на фидбэк по этому комментарию. после очеденого ревью удалю,чтобы код не засорял
+function savePopupAddPhoto (e) {
+  e.preventDefault();
   renderCard(createCard({name: editPhotoName.value, link: editPhotoLink.value}));
   closePopup(popupAddPhoto);
 };
@@ -64,7 +63,8 @@ function openPopupEditProfile() {
   editJob.value = profileJob.textContent;
   openPopup(popupEditProfile);
 };
-function savePopupEditProfile() {
+function savePopupEditProfile(e) {
+  e.preventDefault();
   profileName.textContent = editName.value;
   profileJob.textContent = editJob.value;
   closePopup(popupEditProfile);
