@@ -31,11 +31,13 @@
     <div class="popup popup_edit-profile popup_disabled">
       <div class="popup__container">
         <button class="popup__exit-button" type="button"></button>
-        <form action="#"  class="form-change edit-profile" name="edit-profile">
+        <form action="#"  class="form-change edit-profile" name="edit-profile" novalidate>
           <h2 class="form-change__title">Редактировать профиль</h2>
           <fieldset class="form-change__input-text">
-            <input type="text" class="form-change__text edit-profile__text-name" name='profile-name' placeholder="Введите своё имя">
-            <input type="text" class="form-change__text edit-profile__text-job" name='profile-job' placeholder="Кем вы работаете?">
+            <input id="name-input" type="text" class="form-change__text edit-profile__text-name" minlength="2" maxlength="40" required name='profile-name' placeholder="Введите своё имя">
+            <span class="form-change__input-error name-input-error"></span>
+            <input id="job-input" type="text" class="form-change__text edit-profile__text-job" minlength="2" maxlength="200" required  name='profile-job' placeholder="Кем вы работаете?">
+            <span class="form-change__input-error job-input-error"></span>
           </fieldset>
           <button class="form-change__save-button edit-profile__save-button" type="submit">Сохранить</button>
         </form>
@@ -44,11 +46,13 @@
     <div class="popup popup_add-photo popup_disabled">
       <div class="popup__container">
         <button class="popup__exit-button" type="button"></button>
-        <form action="#" class="form-change add-photo" name="add-photo">
+        <form action="#" class="form-change add-photo" name="add-photo" novalidate>
           <h2 class="form-change__title">Новое место</h2>
           <fieldset class="form-change__input-text">
-            <input type="text" class="form-change__text add-photo__text-name" name="photo-name" placeholder="Название">
-            <input type="text" class="form-change__text add-photo__text-link" name="photo-link" placeholder="Ссылка на картинку"> 
+            <input id="title-input" type="text" class="form-change__text  add-photo__text-title" minlength="2" maxlength="30" required name="photo-name" placeholder="Название">
+            <span class="form-change__input-error title-input-error">тут ошибка тут ошибка</span>
+            <input id="link-input" type="url" class="form-change__text add-photo__text-link" required name="photo-link" placeholder="Ссылка на картинку"> 
+            <span class="form-change__input-error link-input-error"></span>
           </fieldset>
           <button class="form-change__save-button add-photo__save-button" type="submit">Создать</button>
         </form>
