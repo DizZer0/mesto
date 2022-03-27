@@ -18,13 +18,12 @@ const viewPhotoImg = popupViewPhoto.querySelector('.view-photo__img');
 const viewPhotoTitle = popupViewPhoto.querySelector('.view-photo__title')
 const template = document.querySelector('#template').content;
 const photoGrid = document.querySelector('.photo-grid');
+const popupContainer = document.querySelectorAll('.popup__container');
 editName.value = profileName.textContent;
 editJob.value = profileJob.textContent;
-
 // когда закончил работу на валидацией, я вспомнил про плагиат. по сути, код связанный с валидацией получился копией кода из тренажера,
 // с небольшой разницей в названиях переменных и классов. можно конечно ещё поменять именования аргументов у функций...
 // в общем, я оставил эти комментарии на всякий случай. чтобы показать, что я разобрался в коде. писал его сам, иногда поглядывая в тренажер
-
 
 // проверяет все инпуты в форме на валидность. возвращет true, если хоть один инпут не прошёл проверку. и false если всё ок
 function hasInvalidInput (inputList)  {
@@ -53,7 +52,7 @@ function showInputError(formElement, inputElement, errorMessage) {
 function hideInputError(formElement, inputElement) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove('form-change__text_type_error');
-  errorElement.classList.remove('form-change__input-error_active')
+  errorElement.classList.remove('form-change__input-error_active');
 };
 // проверяет input на валидность, после чего вызывает одну из функций
 function checkInputValibity(formElement, inputElement) {
@@ -88,8 +87,6 @@ function enableValidation() {
   });
 }
 enableValidation();
-
-
 function createCard(data) {
   const photoCard = template.querySelector('.photo-grid__item').cloneNode(true);
   const photoCardImage = photoCard.querySelector('.photo-grid__image');
@@ -101,17 +98,17 @@ function createCard(data) {
     viewPhotoImg.alt = data.name;
     viewPhotoTitle.textContent = data.name;
     openPopup (popupViewPhoto);
-  })
-  return photoCard
+  });
+  return photoCard;
 }
 function renderCard(cardValue) {
   photoGrid.prepend(cardValue);
-}
+};
 function addPhotoCard() {
   for (let i = 0; i <initialCards.length; i++) {
     renderCard(createCard(initialCards[i]));
-  }
-}
+  };
+};
 addPhotoCard();
 function openPopup(name) {
   name.classList.remove('popup_disabled');
@@ -141,6 +138,24 @@ addPhotoOpenButton.addEventListener('click', function() {
   editPhotoLink.value = '';
   setEventListeners(addPhotoForm);
   openPopup(popupAddPhoto);
+});
+document.addEventListener('click', function (evt) {
+  if (evt.target.classList.contains('popup__container') || evt.target.classList.contains('popup')) {
+    closePopup(evt.target.closest('.popup'));
+  }
+});
+document.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Escape') {
+    if (!popupAddPhoto.classList.contains('popup_disabled')) {
+      closePopup(popupAddPhoto);
+    }
+    if (!popupEditProfile.classList.contains('popup_disabled')) {
+      closePopup(popupEditProfile);
+    }
+    if (!popupViewPhoto.classList.contains('popup_disabled')) {
+      closePopup(popupViewPhoto);
+    }
+  }
 });
 closeButtonAddPhoto.addEventListener('click', function () {
   closePopup(popupAddPhoto);
