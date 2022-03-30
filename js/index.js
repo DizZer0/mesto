@@ -19,22 +19,12 @@ const viewPhotoTitle = popupViewPhoto.querySelector('.view-photo__title')
 const template = document.querySelector('#template').content;
 const photoGrid = document.querySelector('.photo-grid');
 const popupContainer = document.querySelectorAll('.popup__container');
-nameEdit.value = profileName.textContent;
-jobEdit.value = profileJob.textContent;
-function popupSearch() {
-  const popupList = Array.from(document.querySelectorAll('.popup'));
-  popupList.forEach(function (popupElement) {
-    popupElement.addEventListener('mousedown', function (evt) {
-      if (evt.target.classList.contains('popup__container') || evt.target.classList.contains('popup')) {
-        closePopup(popupElement);
-      }
-    });
-  })
-}
-popupSearch();
+const popupList = Array.from(document.querySelectorAll('.popup'));
 function createCard(data) {
   const photoCard = template.querySelector('.photo-grid__item').cloneNode(true);
   const photoCardImage = photoCard.querySelector('.photo-grid__image');
+  const photoCardLikeButton = photoCard.querySelector('.photo-grid__like-button');
+  const photoCardDeleteButton = photoCard.querySelector('.photo-grid__delete-button');
   photoCardImage.src = data.link;
   photoCardImage.alt = data.name;
   photoCard.querySelector('.photo-grid__title').textContent = data.name;
@@ -43,6 +33,14 @@ function createCard(data) {
     viewPhotoImg.alt = data.name;
     viewPhotoTitle.textContent = data.name;
     openPopup (popupViewPhoto);
+  });
+  // с ревью всё впорядке. просто после прочтения темы в тренажёре "Всплытие и делегирование событий". я подумал, что повесить слушатели на photo-grid
+  // будет более лучшим решением. ведь же хорошо, когда независимо от количества карточек, слушатель  останется один
+  photoCardLikeButton.addEventListener('click', function() {
+    photoCardLikeButton.classList.toggle('photo-grid__like-button_active');
+  });
+  photoCardDeleteButton.addEventListener('click', function() {
+    photoCard.remove();
   });
   return photoCard;
 }
@@ -68,6 +66,8 @@ function savePopupAddPhoto () {
   closePopup(popupAddPhoto);
 };
 function openPopupEditProfile() {
+  nameEdit.value = profileName.textContent;
+  jobEdit.value = profileJob.textContent;
   openPopup(popupEditProfile);
 };
 function savePopupEditProfile() {
@@ -98,13 +98,10 @@ formAddPhoto.addEventListener('submit', savePopupAddPhoto);
 buttonCloseViewPhoto.addEventListener('click', function () {
   closePopup(popupViewPhoto);
 });
-photoGrid.addEventListener('click', function (evt) {
-  if (evt.target.classList.contains('photo-grid__like-button')) {
-    evt.target.classList.toggle('photo-grid__like-button_active');
-  }
-});
-photoGrid.addEventListener('click', function (evt) {
-  if (evt.target.classList.contains('photo-grid__delete-button')) {
-    evt.target.closest('.photo-grid__item').remove();
-  }
-});
+popupList.forEach(function (popupElement) {
+  popupElement.addEventListener('mousedown', function (evt) {
+    if (evt.target.classList.contains('popup__container') || evt.target.classList.contains('popup')) {
+      closePopup(popupElement);
+    }
+  });
+})
