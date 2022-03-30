@@ -36,17 +36,15 @@
 -----------------------------------------------------*/
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+
 /* Блок popup
 -----------------------------------------------------*/
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__exit-button/popup__exit-button.css);
 @import url(../blocks/popup/__container/popup__container.css);
-/* Блок popup
------------------------------------------------------*/
-@import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/_disabled/popup_disabled.css);
-@import url(../blocks/popup/__exit-button/popup__exit-button.css);
-@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/_type/popup_type_view-photo.css);
+
 /* Блок form-change
 -----------------------------------------------------*/
 @import url(../blocks/form-change/form-change.css);
