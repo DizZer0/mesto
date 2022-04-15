@@ -1,3 +1,6 @@
+import Validate from './validate.js';
+import {initialCards} from './dataCards.js';
+import Card from './card.js';
 const buttonOpenEditProfile = document.querySelector('.profile__edit-button');
 const buttonOpenAddPhoto = document.querySelector('.profile__add-button');
 const profileName = document.querySelector('.profile__name');
@@ -14,46 +17,15 @@ const nameEdit = popupEditProfile.querySelector('.edit-profile__text-name');
 const jobEdit = popupEditProfile.querySelector('.edit-profile__text-job');
 const popupViewPhoto = document.querySelector('.popup_view-photo');
 const buttonCloseViewPhoto = popupViewPhoto.querySelector('.popup__exit-button');
-const viewPhotoImg = popupViewPhoto.querySelector('.view-photo__img');
-const viewPhotoTitle = popupViewPhoto.querySelector('.view-photo__title')
+const viewPhotoImg = document.querySelector('.view-photo__img');
+const viewPhotoTitle = document.querySelector('.view-photo__title')
 const template = document.querySelector('#template').content;
 const photoGrid = document.querySelector('.photo-grid');
 const popupContainer = document.querySelectorAll('.popup__container');
 const popupList = Array.from(document.querySelectorAll('.popup'));
-function createCard(data) {
-  const photoCard = template.querySelector('.photo-grid__item').cloneNode(true);
-  const photoCardImage = photoCard.querySelector('.photo-grid__image');
-  const photoCardLikeButton = photoCard.querySelector('.photo-grid__like-button');
-  const photoCardDeleteButton = photoCard.querySelector('.photo-grid__delete-button');
-  photoCardImage.src = data.link;
-  photoCardImage.alt = data.name;
-  photoCard.querySelector('.photo-grid__title').textContent = data.name;
-  photoCardImage.addEventListener('click', function (evt) {
-    viewPhotoImg.src = data.link;
-    viewPhotoImg.alt = data.name;
-    viewPhotoTitle.textContent = data.name;
-    openPopup (popupViewPhoto);
-  });
-  // с ревью всё впорядке. просто после прочтения темы в тренажёре "Всплытие и делегирование событий". я подумал, что повесить слушатели на photo-grid
-  // будет более лучшим решением. ведь же хорошо, когда независимо от количества карточек, слушатель  останется один
-  photoCardLikeButton.addEventListener('click', function() {
-    photoCardLikeButton.classList.toggle('photo-grid__like-button_active');
-  });
-  photoCardDeleteButton.addEventListener('click', function() {
-    photoCard.remove();
-  });
-  return photoCard;
-}
-function renderCard(cardValue) {
-  photoGrid.prepend(cardValue);
-};
-function addPhotoCard() {
-  initialCards.forEach(function (cardElement) {
-    renderCard(createCard(cardElement));
-  });
-};
-addPhotoCard();
-function openPopup(name) {
+export {viewPhotoImg, viewPhotoTitle, popupViewPhoto};
+
+export function openPopup(name) {
   name.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEsc);
 };
@@ -62,7 +34,8 @@ function closePopup (name) {
   document.removeEventListener('keydown', closeByEsc);
 };
 function savePopupAddPhoto () {
-  renderCard(createCard({name: nameEditPhoto.value, link: linkEditPhoto.value}));
+  const card = new Card({name: nameEditPhoto.value, link: linkEditPhoto.value})
+  photoGrid.prepend(card.generateCard());
   closePopup(popupAddPhoto);
 };
 function openPopupEditProfile() {
@@ -105,3 +78,19 @@ popupList.forEach(function (popupElement) {
     }
   });
 })
+// создание экземпляров класса Validate
+const formList = Array.from(document.querySelectorAll('.form-change'));
+formList.forEach((formElement) => {
+  const validate = new Validate({
+  inputSelector: '.form-change__text',
+  submitButtonSelector: '.form-change__save-button',
+  inactiveButtonClass: 'form-change__save-button_inactive',
+  inputErrorClass: 'form-change__text_type_error',
+  errorClass: 'form-change__input-error_active'}, formElement);
+  validate.enableValidation();
+});
+// создание экземпляров класса Card
+initialCards.forEach(item => {
+  const card = new Card(item);
+  photoGrid.prepend(card.generateCard());
+});
