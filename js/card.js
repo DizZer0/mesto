@@ -1,26 +1,29 @@
 import {viewPhotoImg, viewPhotoTitle, popupViewPhoto, openPopup} from './index.js';
 export default class Card {
-  constructor(data) {
+  constructor(data, cardSelector) {
     this._name = data.name;
     this._link = data.link;
+    this._cardSelector = cardSelector;
   }
   _getTemplate() {
-    const cardElement = document.querySelector('#template').content.querySelector('.photo-grid__item').cloneNode(true);
+    const cardElement = this._cardSelector.cloneNode(true);
     return cardElement;
   }
   generateCard() {
     this._element = this._getTemplate();
+    this._cardImage = this._element.querySelector('.photo-grid__image');
+    this._buttonLike = this._element.querySelector('.photo-grid__like-button');
     this._setEventListener();
-    this._element.querySelector('.photo-grid__image').src = this._link;
-    this._element.querySelector('.photo-grid__image').alt = this._name;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
     this._element.querySelector('.photo-grid__title').textContent = this._name;
     return this._element;
   }
   _setEventListener() {
-    this._element.querySelector('.photo-grid__image').addEventListener('click', () => {
+    this._cardImage.addEventListener('click', () => {
       this._handleImageClick();
     });
-    this._element.querySelector('.photo-grid__like-button').addEventListener('click', () => {
+    this._buttonLike.addEventListener('click', () => {
       this._handleLikeClick();
     });
     this._element.querySelector('.photo-grid__delete-button').addEventListener('click', () => {
@@ -34,7 +37,7 @@ export default class Card {
     openPopup (popupViewPhoto);
   }
   _handleLikeClick() {
-    this._element.querySelector('.photo-grid__like-button').classList.toggle('photo-grid__like-button_active');
+    this._buttonLike.classList.toggle('photo-grid__like-button_active');
   };
   _handleDeleteClick() {
     this._element.remove();
