@@ -6,22 +6,20 @@ const buttonOpenAddPhoto = document.querySelector('.profile__add-button');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__status');
 const popupAddPhoto = document.querySelector('.popup_add-photo');
-const buttonCloseAddPhoto = popupAddPhoto.querySelector('.popup__exit-button');
 const formAddPhoto = popupAddPhoto.querySelector('.add-photo');
 const nameEditPhoto = popupAddPhoto.querySelector('.add-photo__text-title');
 const linkEditPhoto = popupAddPhoto.querySelector('.add-photo__text-link');
 const popupEditProfile = document.querySelector('.popup_edit-profile');
-const buttonCloseEditProfile = popupEditProfile.querySelector('.popup__exit-button');
 const formEdit = popupEditProfile.querySelector('.edit-profile');
 const nameEdit = popupEditProfile.querySelector('.edit-profile__text-name');
 const jobEdit = popupEditProfile.querySelector('.edit-profile__text-job');
 const popupViewPhoto = document.querySelector('.popup_view-photo');
-const buttonCloseViewPhoto = popupViewPhoto.querySelector('.popup__exit-button');
 const viewPhotoImg = document.querySelector('.view-photo__img');
 const viewPhotoTitle = document.querySelector('.view-photo__title')
-const cardSelector = document.querySelector('#template').content.querySelector('.photo-grid__item');
+const cardTemplate = document.querySelector('#template').content.querySelector('.photo-grid__item');
 const photoGrid = document.querySelector('.photo-grid');
 const popupList = Array.from(document.querySelectorAll('.popup'));
+const closeButtons = document.querySelectorAll('.popup__exit-button');
 export {viewPhotoImg, viewPhotoTitle, popupViewPhoto};
 export function openPopup(name) {
   name.classList.add('popup_opened');
@@ -31,8 +29,12 @@ function closePopup (name) {
   name.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeByEsc);
 };
+closeButtons.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
+});
 function createCard (item) {
-  const cardElement = new Card(item, cardSelector);
+  const cardElement = new Card(item, cardTemplate);
   return cardElement.generateCard();
 }
 function savePopupAddPhoto () {
@@ -64,9 +66,6 @@ function handleCardClick(name, link) {
   openPopup (popupViewPhoto);
 }
 buttonOpenEditProfile.addEventListener('click', openPopupEditProfile);
-buttonCloseEditProfile.addEventListener('click', function (){
-  closePopup(popupEditProfile);
-});
 formEdit.addEventListener('submit', savePopupEditProfile);
 // метод ресет пытается удалить класс, которого нет
 buttonOpenAddPhoto.addEventListener('click', function() {
@@ -75,14 +74,7 @@ buttonOpenAddPhoto.addEventListener('click', function() {
   formValidators['add-photo'].resetValidation();
   openPopup(popupAddPhoto);
 });
-buttonCloseAddPhoto.addEventListener('click', function () {
-  closePopup(popupAddPhoto);
-  
-});
 formAddPhoto.addEventListener('submit', savePopupAddPhoto);
-buttonCloseViewPhoto.addEventListener('click', function () {
-  closePopup(popupViewPhoto);
-});
 popupList.forEach(function (popupElement) {
   popupElement.addEventListener('mousedown', function (evt) {
     if (evt.target.classList.contains('popup__container') || evt.target.classList.contains('popup')) {

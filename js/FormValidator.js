@@ -12,12 +12,8 @@ export default class FormValidator {
   resetValidation() {
     this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
-      if(inputElement.classList.contains('form-change__text_type_error')) {
-        inputElement.classList.remove(this._selector.inputErrorClass);
         const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
-        errorElement.classList.remove(this._selector.errorClass);
-      }
-     
+        this._hideInputError(inputElement, errorElement);
     });
   }
   _toggleButtonState() {
