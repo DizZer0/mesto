@@ -1,9 +1,9 @@
-import {viewPhotoImg, viewPhotoTitle, popupViewPhoto, openPopup} from './index.js';
 export default class Card {
-  constructor(data, cardTemplate) {
+  constructor({data, handleCardClick}, cardTemplate) {
     this._name = data.name;
     this._link = data.link;
     this._cardTemplate = cardTemplate;
+    this._handleCardClick = handleCardClick;
   }
   _getTemplate() {
     const cardElement = this._cardTemplate.cloneNode(true);
@@ -21,7 +21,7 @@ export default class Card {
   }
   _setEventListener() {
     this._cardImage.addEventListener('click', () => {
-      this._handleImageClick();
+      this._handleCardClick({name:  this._name, link: this._link});
     });
     this._buttonLike.addEventListener('click', () => {
       this._handleLikeClick();
@@ -29,12 +29,6 @@ export default class Card {
     this._element.querySelector('.photo-grid__delete-button').addEventListener('click', () => {
       this._handleDeleteClick();
     });
-  }
-  _handleImageClick() {
-    viewPhotoImg.src = this._link;
-    viewPhotoImg.alt = this._name;
-    viewPhotoTitle.textContent = this._name;
-    openPopup (popupViewPhoto);
   }
   _handleLikeClick() {
     this._buttonLike.classList.toggle('photo-grid__like-button_active');
