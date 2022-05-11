@@ -1,11 +1,12 @@
 import '../pages/index.css';
 import FormValidator from '../scripts/components/FormValidator.js';
-import {initialCards} from '../scripts/components/dataCards.js';
+import {initialCards} from '../scripts/utils/dataCards.js';
 import Card from '../scripts/components/Card.js';
 import Section from '../scripts/components/Section.js';
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import UserInfo from '../scripts/components/UserInfo.js';
+import {settings} from '../scripts/utils/constants.js'
 
 const buttonOpenEditProfile = document.querySelector('.profile__edit-button');
 const buttonOpenAddPhoto = document.querySelector('.profile__add-button');
@@ -34,13 +35,7 @@ const enableValidation = (config) => {
    validator.enableValidation();
   });
 };
-enableValidation({
-  formSelector: '.form-change',
-  inputSelector: '.form-change__text',
-  submitButtonSelector: '.form-change__save-button',
-  inactiveButtonClass: 'form-change__save-button_inactive',
-  inputErrorClass: 'form-change__text_type_error',
-  errorClass: 'form-change__input-error_active'});
+enableValidation(settings);
 
 const cardList = new Section({items: initialCards, 
 renderer: (item) => {

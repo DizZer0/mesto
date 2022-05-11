@@ -9,8 +9,9 @@ export default class PopupWithForm extends Popup {
     this._submit = this._submit.bind(this);
   }
   setInputValue(data) {
-    this._popup.querySelector('.edit-profile__text-name').value = data.name;
-    this._popup.querySelector('.edit-profile__text-job').value = data.status;
+    this._inputList.forEach(input => {
+      input.value = data[input.name];
+    });
   }
   _submit(){
     this._submitForm(this._getInputValues());
@@ -19,6 +20,7 @@ export default class PopupWithForm extends Popup {
     this._inputValues = {};
     this._inputList.forEach((item) => {
       this._inputValues[item.name] = item.value;
+      console.log('f')
     });
     return this._inputValues;
   }
@@ -32,10 +34,7 @@ export default class PopupWithForm extends Popup {
   }
 
   close() {
-
-    this._inputList.forEach((item) => {
-      item.textContent = '';
-    });
+    this._form.reset()
     super.close();
   }
 }
