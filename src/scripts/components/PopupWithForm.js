@@ -7,6 +7,7 @@ export default class PopupWithForm extends Popup {
     this._inputValues = {};
     this._form = this._popup.querySelector('.form-change');
     this._submit = this._submit.bind(this);
+    this.submitBtn = this._form.querySelector('.form-change__save-button')
   }
   setInputValue(data) {
     this._inputList.forEach(input => {
@@ -36,5 +37,9 @@ export default class PopupWithForm extends Popup {
   close() {
     this._form.reset()
     super.close();
+  }
+  loadingWait() {
+    console.log('wait')
+    this.submitBtn.textContent = "Сохранение..."
   }
 }

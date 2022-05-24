@@ -22,6 +22,7 @@
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__status/profile__status.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
+@import url(../blocks/profile/__avatar-btn/profile__avatar-btn.css);
 /* Блок photo-grid
 -----------------------------------------------------*/
 @import url(../blocks/photo-grid/photo-grid.css);
@@ -32,6 +33,7 @@
 @import url(../blocks/photo-grid/__item/photo-grid__item.css);
 @import url(../blocks/photo-grid/__title/photo-grid__title.css);
 @import url(../blocks/photo-grid/__delete-button/photo-grid__delete-button.css);
+@import url(../blocks/photo-grid/__like-number/photo-grid__like-number.css);
 /* Блок footer
 -----------------------------------------------------*/
 @import url(../blocks/footer/footer.css);
@@ -56,11 +58,16 @@
 @import url(../blocks/form-change/__input-error/form-change__input-error.css);
 @import url(../blocks/form-change/__input-error/_active/form-change__input-error_active.css);
 @import url(../blocks/form-change/__save-button/_inactive/form-change__save-button_inactive.css);
+@import url(../blocks/form-change/__title/_type/form-change__title_type_delete.css);
 /* Блок view-photo
 -----------------------------------------------------*/
 @import url(../blocks/view-photo/view-photo.css);
 @import url(../blocks/view-photo/__img/view-photo__img.css);
 @import url(../blocks/view-photo/__title/view-photo__title.css);
+/* Блок delete-photo
+-----------------------------------------------------*/
+
+
 /*   @import url(../blocks);      */
 /* Блок 
 -----------------------------------------------------*/
