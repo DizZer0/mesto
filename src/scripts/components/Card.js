@@ -53,14 +53,11 @@ export default class Card {
     this._buttonLike.addEventListener('click', () => {
       if(!this._buttonLike.classList.contains('photo-grid__like-button_active')) {
         this._subCardLike(this._data)
-        console.log('sub')
       } else {
         this._delCardLike(this._data)
-        console.log('del')
       }
     });
     this._buttonDelete.addEventListener('click', (evt) => {
-      console.log(evt.target.closest('.photo-grid__item'))
       this._delCardItem(evt, this._data)
     });
   }

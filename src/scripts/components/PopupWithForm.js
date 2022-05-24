@@ -21,7 +21,6 @@ export default class PopupWithForm extends Popup {
     this._inputValues = {};
     this._inputList.forEach((item) => {
       this._inputValues[item.name] = item.value;
-      console.log('f')
     });
     return this._inputValues;
   }
@@ -39,7 +38,6 @@ export default class PopupWithForm extends Popup {
     super.close();
   }
   loadingWait() {
-    console.log('wait')
     this.submitBtn.textContent = "Сохранение..."
   }
 }

@@ -8,6 +8,10 @@ export default class PopupWithDelete extends Popup {
     this._form.addEventListener('submit', this._submitForm);
     super._setEventListeners();
   }
+  _removeEventListeners() {
+    this._form.removeEventListener('submit', this._submitForm);
+    super._removeEventListeners()
+  }
   changeSubmitForm(submitFunction) {
     this._submitForm = submitFunction
   }

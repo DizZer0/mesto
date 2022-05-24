@@ -17,7 +17,6 @@ export default class UserInfo {
     this._userStatus.textContent = data.about
   }
   setUserAvatar(data) {
-    console.log(data.avatar)
     this._userAvatar.src = `${data.avatar}`
   }
 }

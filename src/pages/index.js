@@ -65,10 +65,12 @@ renderer: (item) => {
   subCardLike: (data) => {
     api.subCardLike(data)
       .then((res) => card.setLike(res))
+      .catch((err) => console.log(`Ошибка: ${err}`))
   },
   delCardLike: (data) => {
     api.delCardLike(data)
       .then((res) => card.setLike(res))
+      .catch((err) => console.log(`Ошибка: ${err}`))
   },
   delCardItem: (evt, data) => {
     const cardElement = evt.target.closest('.photo-grid__item')
@@ -78,6 +80,7 @@ renderer: (item) => {
         cardElement.remove()
         deleteCardForm.close()
       })
+      .catch((err) => console.log(`Ошибка: ${err}`))
     })
     deleteCardForm.open()
   },
@@ -95,10 +98,10 @@ const addPhotoForm = new PopupWithForm({submitForm: (data) => {
   api.subCardItem(data)
     .then((res) => {
       cardList.renderItem(res)
+      addPhotoForm.close()
     })
     .catch(err => console.log(`Ошибка: ${err}`))
     .finally(() => {
-      addPhotoForm.close()
       addPhotoForm.submitBtn.textContent = 'Создать'
     })
 }}, '.popup_add-photo')
@@ -108,24 +111,28 @@ const popupWithImage = new PopupWithImage('.popup_view-photo')
 const userInfo = new UserInfo({name: '.profile__name', status: ".profile__status", avatar: '.profile__avatar'});
 
 const editProfileForm = new PopupWithForm({submitForm: (data) => {
-  userInfo.setUserInfo(data);
   editProfileForm.loadingWait()
   api.subUserInfo(data)
+    .then(() => {
+      userInfo.setUserInfo(data);
+      editProfileForm.close();
+    })
     .catch((err) => console.log(`Ошибка: ${err}`))
     .finally(() => {
       editProfileForm.submitBtn.textContent = 'Сохранить'
-      editProfileForm.close()
     })
 }}, '.popup_edit-profile')
 
 const editAvatarForm = new PopupWithForm({submitForm: (data) => {
-  profileAvatar.src = data.avatar;
   editAvatarForm.loadingWait()
   api.subAvatarPhoto(data)
+    .then(() => {
+      editAvatarForm.close()
+      editAvatarForm.setUserAvatar(data)
+    })
     .catch((err) => console.log(`Ошибка: ${err}`))
     .finally(() => {
       editAvatarForm.submitBtn.textContent = 'Сохранить'
-      editAvatarForm.close()
     })
 }}, '.popup_edit-avatar')
 
