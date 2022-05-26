@@ -39,5 +39,8 @@ export default class PopupWithForm extends Popup {
   }
   loadingWait() {
     this.submitBtn.textContent = "Сохранение..."
+    // нашёл баг. при сохранении новой карточки, если кликать по кнопке "сохранение...", то карточка создаться несколько раз.
+    // для этого я меняю тип кнопки на button. а когда придет любой ответ от сервера, меняю обратно на submit при помощи reset в formvalidator.
+    this.submitBtn.setAttribute('type', 'button')
   }
 }

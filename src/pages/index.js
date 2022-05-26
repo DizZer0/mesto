@@ -103,6 +103,7 @@ const addPhotoForm = new PopupWithForm({submitForm: (data) => {
     .catch(err => console.log(`Ошибка: ${err}`))
     .finally(() => {
       addPhotoForm.submitBtn.textContent = 'Создать'
+      formValidators['add-photo'].resetValidation();
     })
 }}, '.popup_add-photo')
 
@@ -128,11 +129,12 @@ const editAvatarForm = new PopupWithForm({submitForm: (data) => {
   api.subAvatarPhoto(data)
     .then(() => {
       editAvatarForm.close()
-      editAvatarForm.setUserAvatar(data)
+      userInfo.setUserAvatar(data)
     })
     .catch((err) => console.log(`Ошибка: ${err}`))
     .finally(() => {
       editAvatarForm.submitBtn.textContent = 'Сохранить'
+
     })
 }}, '.popup_edit-avatar')
 
